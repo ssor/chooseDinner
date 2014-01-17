@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<title>抽奖</title>
+		<link rel="stylesheet" href="./stylesheets/style.css" />
+		<script type="text/javascript" src="./javascripts/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var canvas = $("#myCanvas");
+				var context = canvas.get(0).getContext("2d");
+				context.fillStyle = "rgb(255,0,0)";
+				context.fillRect(0, 0, 100, 100);
+
+				context.strokeStyle = "rgb(0,255,0)";
+				context.lineWidth = 5;
+				context.beginPath();
+				context.moveTo(0, 110);
+				context.lineTo(500, 110);
+				context.closePath();
+				context.stroke();
+
+				context.lineWidth = 15;
+				context.beginPath();
+				context.moveTo(0, 130);
+				context.lineTo(500, 130);
+				context.closePath();
+				context.stroke();
+
+			});
+		</script>
+	</head>
+	
+	<body>
+		<canvas id="myCanvas" width="500" height="500">
+		</canvas>
+	</body>
+</html>

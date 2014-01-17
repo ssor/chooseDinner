@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<title>抽奖</title>
+		<link rel="stylesheet" href="./stylesheets/style.css" />
+		<script type="text/javascript" src="./javascripts/jquery.min.js"></script>
+		<script type="text/javascript" src="./javascripts/underscore-min.js"></script>
+		<script type="text/javascript" src="./javascripts/menus.js"></script>
+		<script type="text/javascript">
+			var bShow = true;
+			var menubody;
+			var value = 0;
+			var max = menus.length-1;
+			var shuffledMenus;
+			var timerID;
+			$(document).ready(function(){
+				menubody = $("#menubody");
+				// menubody.html("111");
+
+				timerID = setInterval(changeShowState, 100);
+			});
+			function shuffleMenu(){
+				shuffledMenus = _.shuffle(menus);
+			}
+			function changeShowState(){
+				menubody.html(menus[value]);
+				value++;
+				if(value > max){
+					value = 0;
+					shuffleMenu();
+				} 
+			}
+			function stop(){
+				clearInterval(timerID);
+				if(value > max) value = max;
+				menubody.html(shuffledMenus[value]);
+				$('#btnControl').hide();
+			}
+		</script>
+	</head>
+	
+	<body>
+		<div id = "menubody" style="text-align: center; font-size: 100px; margin-top: 50px;">
+
+		</div>
+		<div style="text-align: center; margin-top: 100px;">
+			<button id="btnControl" style="width: 200px; height: 50px; font-size: 30px;" onclick="stop()">停</button>
+		</div>
+	</body>
+</html>
